@@ -22,7 +22,7 @@ sh 'mvn package'
 
 
 stage('Archive-Artifacts') {
-archiveArtifacts artifacts: '**/*.war', followSymlinks: false
+archiveArtifacts artifacts: '**/*.jar', followSymlinks: false
 }
 
 }
