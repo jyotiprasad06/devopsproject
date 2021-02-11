@@ -4,7 +4,7 @@ node ('master'){
 stage('Git-CheckOut') {
   git 'https://github.com/jyotiprasad06/devopsproject.git'
 }
-dir('petclinic-code') {
+dir('01-Jenkins/petclinic-code') {
 stage('Maven-Clean') {
     sh 'mvn clean'
 }
