@@ -2,7 +2,7 @@ node ('master'){
 
 
 stage('Git-CheckOut') {
-  git branch: 'master', url: ''https://github.com/jyotiprasad06/devopsproject.git
+  git branch: 'master', url: 'https://github.com/jyotiprasad06/devopsproject.git'
 }
 
 stage('Maven-Clean') {
