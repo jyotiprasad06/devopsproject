@@ -25,5 +25,5 @@ sh 'mvn package'
 stage('Archive-Artifacts') {
 archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
 }
-|
+
 }
