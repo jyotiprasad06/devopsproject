@@ -20,11 +20,6 @@ stage('Maven-Package') {
 sh 'mvn package'
 }
 
-stage('SonarQube') {
-  withSonarQubeEnv('Sonar') {
-    sh 'mvn sonar:sonar'
-  }
-}
 
 stage('Archive-Artifacts') {
 archiveArtifacts artifacts: '**/*.war', followSymlinks: false
