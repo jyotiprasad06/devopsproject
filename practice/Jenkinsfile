@@ -20,6 +20,13 @@ sh 'mvn test'
 stage('Maven-Package') {
 sh 'mvn package'
 }
+server.upload spec: uploadSpec
+
+stage('SonarQube') {
+  withSonarQubeEnv('Sonar') {
+    sh 'mvn sonar:sonar'
+  }
+}
 
 stage('Build Management') {
    def uploadSpec = """{ 
@@ -31,13 +38,6 @@ stage('Build Management') {
       ]
 
 }"""
-server.upload spec: uploadSpec
-
-stage('SonarQube') {
-  withSonarQubeEnv('Sonar') {
-    sh 'mvn sonar:sonar'
-  }
-}
 
 }
 
