@@ -1,6 +1,7 @@
 node ('master'){
 def server = Artifactory.server "jfrog"
 def buildInfo = Artifactory.newBuildInfo()
+
 stage('Download Package') {
    def downloadSpec = """{ 
      "files": [
