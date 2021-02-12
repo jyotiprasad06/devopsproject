@@ -26,7 +26,6 @@ stage('SonarQube') {
     sh 'mvn sonar:sonar'
   }
 }
-server.upload spec: uploadSpec
 stage('Build Management') {
    def uploadSpec = """{ 
      "files": [
@@ -37,6 +36,7 @@ stage('Build Management') {
       ]
 
 }"""
+server.upload spec: uploadSpec
 
 }
 
