@@ -1,6 +1,5 @@
 node ('master'){
-def server = Artifactory.server "jfrog"
-def buildInfo = Artifactory.newBuildInfo()
+
 
 stage('Git-CheckOut') {
   git 'https://github.com/jyotiprasad06/devopsproject.git'
@@ -21,24 +20,14 @@ stage('Maven-Package') {
 sh 'mvn package'
 }
 
-stage('Build Management') {
-   def uploadSpec = """{ 
-     "files": [
-        {
-         "pattern": "**/*.war",
-         "target": "generic-local"
-        }
-      ]
-
-}"""
-server.upload spec: uploadSpec
-
 stage('SonarQube') {
   withSonarQubeEnv('Sonar') {
     sh 'mvn sonar:sonar'
   }
 }
 
+stage('Archive-Artifacts') {
+archiveArtifacts artifacts: '**/*.war', followSymlinks: false
 }
 
 }
